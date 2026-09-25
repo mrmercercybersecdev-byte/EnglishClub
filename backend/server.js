@@ -47,8 +47,12 @@ if (process.env.MONGODB_URI) {
   console.warn('MONGODB_URI is not set; database routes will be unavailable.');
 }
 
-app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
-});
+if (require.main === module) {
+  app.listen(port, () => {
+    console.log(`Server running on http://localhost:${port}`);
+  });
+}
+
+module.exports = app;
 
 module.exports = app;

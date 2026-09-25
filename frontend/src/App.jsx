@@ -59,8 +59,10 @@ const rankingMembers = [
   { name: 'Amina Yusuf', handle: '@amina', points: 580, streak: 14, initials: 'AY', color: 'lilac' },
 ]
 
+function ThemeToggle() { const [dark, setDark] = useState(() => localStorage.getItem('english-club-theme') === 'midnight'); useEffect(() => { document.documentElement.dataset.theme = dark ? 'midnight' : 'daylight'; localStorage.setItem('english-club-theme', dark ? 'midnight' : 'daylight') }, [dark]); return <button className="theme-toggle" onClick={() => setDark(!dark)} aria-label={dark ? 'Switch to daylight theme' : 'Switch to midnight theme'}><span>{dark ? '☼' : '◐'}</span><small>{dark ? 'Daylight' : 'Midnight'}</small></button> }
+
 function Header({ title, onMenu }) {
-  return <header className="topbar"><button className="mobile-menu" onClick={onMenu} aria-label="Open navigation">☰</button><div><p className="breadcrumb">English Club <span>/</span> 2026 - 27</p><h1>{title}</h1></div><div className="top-actions"><button className="icon-button" aria-label="Notifications">♧<i /></button><button className="profile-chip"><span>AM</span><b>Alex Morgan</b><small>Member</small></button></div></header>
+  return <header className="topbar"><button className="mobile-menu" onClick={onMenu} aria-label="Open navigation">☰</button><div><p className="breadcrumb">English Club <span>/</span> 2026 - 27</p><h1>{title}</h1></div><div className="top-actions"><ThemeToggle /><button className="icon-button" aria-label="Notifications">♧<i /></button><button className="profile-chip"><span>AM</span><b>Alex Morgan</b><small>Member</small></button></div></header>
 }
 
 function SocialFeed({ navigate }) { const [liked, setLiked] = useState([]); const [followed, setFollowed] = useState(false); const toggleLike = (id) => setLiked(liked.includes(id) ? liked.filter((item) => item !== id) : [...liked, id]); return <>
