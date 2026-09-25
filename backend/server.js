@@ -32,7 +32,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'OK', timestamp: new Date().toISOString() });
+  const database = mongoose.connection.readyState === 1 ? 'connected' : 'disconnected';
+  res.status(database === 'connected' || !process.env.MONGODB_URI ? 200 : 503)
+    .json({ status: database === 'connected' || !process.env.MONGODB_URI ? 'OK' : 'DEGRADED', database, timestamp: new Date().toISOString() });
 });
 
 app.use('/api/dictionary', dictionaryRoutes);

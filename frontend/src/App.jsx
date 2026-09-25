@@ -41,11 +41,6 @@ const rooms = [
   { title: 'Teacher office hours', host: 'Ms. Rivera', type: 'Ask anything', people: 3, color: 'peach', live: false },
 ]
 
-const starterPosts = [
-  { author: 'Maya Okafor', initials: 'MO', role: 'Teacher', time: '12 min ago', text: 'What is one English word you wish existed in every language? I will start: “warmly”.', likes: 24, color: 'coral' },
-  { author: 'Jordan Lee', initials: 'JL', role: 'Member', time: '1 hr ago', text: 'I used my new “serendipity” badge in a conversation today. Tiny win, big feeling.', likes: 16, color: 'teal' },
-]
-
 const incidents = [
   { id: 'INC-2048', title: 'Unusual login attempts', severity: 'High', status: 'Investigating', owner: 'Security team', time: '12 min ago' },
   { id: 'INC-2042', title: 'Reported community post', severity: 'Medium', status: 'Awaiting review', owner: 'A. Yusuf', time: '48 min ago' },
