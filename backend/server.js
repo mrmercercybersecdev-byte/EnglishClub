@@ -8,6 +8,7 @@ require('dotenv').config();
 
 const dictionaryRoutes = require('./routes/dictionaryRoutes');
 const communityRoutes = require('./routes/communityRoutes');
+const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -36,6 +37,7 @@ app.get('/api/health', (req, res) => {
 
 app.use('/api/dictionary', dictionaryRoutes);
 app.use('/api/community', communityRoutes);
+app.use('/api/auth', authRoutes);
 
 if (process.env.MONGODB_URI) {
   mongoose.connect(process.env.MONGODB_URI)
